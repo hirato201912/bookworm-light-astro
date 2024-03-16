@@ -10,11 +10,17 @@ const posts = await getSinglePage("posts");
 const sortedPosts = sortByDate(posts);
 const totalPages = Math.ceil(posts.length / config.settings.pagination);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
+
+import FeedbackForm from "@/components/FeedbackForm"
+
 ---
 
 <Base>
   <section class="section">
     <div class="container">
+
+<FeedbackForm client:load />
       <Posts posts={currentPosts} className="mb-16" />
       <Pagination currentPage={1} totalPages={totalPages} />
     </div>

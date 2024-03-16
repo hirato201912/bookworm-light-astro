@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>問い合わせフォーム</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<style>
+    .label {
+        display: inline;
+        padding: .2em .6em .3em;
+        font-size: 75%;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background-color: #f0ad4e; /* Warningラベルの背景色 */
+    }
+</style>
+</head>
+<body>
+<p>
+    お申込者 <span class="label">必須</span> 保護者 本人 その他
+</p>
+</body>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // フォームの送信を阻止
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const inquiry = document.getElementById('inquiry').value;
+
+            console.log('氏名:', fullName);
+            console.log('メールアドレス:', email);
+            console.log('お問い合わせ内容:', inquiry);
+
+            // ここに実際の送信処理を実装する
+            // 例: フォームデータをAPIにPOSTする等
+        });
+    </script>
+</body>
+</html>
