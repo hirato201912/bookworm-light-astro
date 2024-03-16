@@ -23,11 +23,7 @@
   },
 
   "params": {
-<<<<<<< HEAD
     "contact_form_action": "/api/submitForm",
-=======
-    "contact_form_action": "/api/submitContactForm",
->>>>>>> second
     "copyright": "Copyright © 2023 a theme by [Themefisher](https://themefisher.com)"
   },
 
