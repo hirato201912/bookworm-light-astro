@@ -25,7 +25,7 @@ export default function Form() {
   return (
     <form onSubmit={submit}>
       <label htmlFor="name">
-        Name
+        名前
         <input type="text" id="name" name="name" autoComplete="name" required />
       </label>
       <label htmlFor="email">
