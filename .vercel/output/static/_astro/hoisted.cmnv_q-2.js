@@ -1,0 +1,1 @@
+import"./hoisted.DqR2iBSn.js";const o=document.getElementById("contact-form");o?.addEventListener("submit",async r=>{r.preventDefault();const t=new FormData(o);Object.fromEntries(t.entries());try{const n=await(await fetch("/api/contact",{method:"POST",body:t})).json();console.log("Success:",n)}catch(e){console.error("Error:",e)}});
