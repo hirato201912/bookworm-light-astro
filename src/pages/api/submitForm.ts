@@ -1,21 +1,43 @@
-// src/pages/api/submitForm.ts
-
-import type { APIRoute } from 'astro';
+import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
-  const formData = await request.formData();
-  const name = formData.get('name'); // フォームから'name'フィールドのデータを取得
-  const email = formData.get('email'); // フォームから'email'フィールドのデータを取得
-  // 他のフォームデータも同様に取得可能
-  console.log(name, email);
-  // フォームデータを使った処理をここに記述
-  // 例: データベースへの保存、メール送信など
 
-  // 成功した場合のレスポンス
-  return new Response(JSON.stringify({ message: "Form data submitted successfully" }), {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    status: 200, // HTTPステータスコード
-  });
+
+  try {
+    // リクエストからフォームデータを取得
+    const data = await request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    // 入力データの検証
+    if (!name || !email || !message) {
+      return new Response(
+        JSON.stringify({
+          message: "Missing required fields",
+        }),
+        { status: 400, headers: {'Content-Type': 'application/json'} }
+      );
+    }
+
+    // ここでデータに対する何かしらの処理を行う
+    // 例えば、データベースへの保存、メール送信など
+
+    // 処理が成功したら、成功レスポンスを返す
+    return new Response(
+      JSON.stringify({
+        message: "Success!",
+        // 処理結果や追加データを含めることができる
+      }),
+      { status: 200, headers: {'Content-Type': 'application/json'} }
+    );
+  } catch (error) {
+    // エラー発生時の処理
+    return new Response(
+      JSON.stringify({
+        message: `Server error: ${error}`,
+      }),
+      { status: 500, headers: {'Content-Type': 'application/json'} }
+    );
+  }
 };
